@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+<%- include('./includes/head.ejs') %>
   </head>
   <body>
-    <div class="main-header">
-      <nav class="navbar navbar-light bg-light main-header-nav">
-        <ul class="main-header-item-list">
-          <li class="main-header-item">
-            <a class="navbar-brand brand-name" href="/">Social Login Demo</a>
-          </li>
-          <li class="main-header-item">
-            <a href="/login">Login</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <%- include('./includes/navigation.ejs') %>
     <main>
       <h1><%= title %></h1>
       <p>Welcome to <%= title %></p>
