@@ -4,9 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 
 const http = require('http');
+const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+
+const os = require('os');
+require('dotenv').config({
+  path: os.homedir() + '/social-login.env'
+});
 
 const app = express();
 
@@ -30,9 +36,21 @@ app.use(function(req, res, next) {
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
 const server = http.createServer(app);
-server.listen(port);
+
+
+mongoose.connect(
+    process.env.MONGO_URI,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }).then(() => {
+  server.listen(port);
+  console.log('Database connection successful');
+}).catch((err) => {
+  console.error(err, 'Database connection error');
+});
+
 server.on('error', onError);
 server.on('listening', onListening);
 
