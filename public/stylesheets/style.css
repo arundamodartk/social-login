@@ -84,3 +84,18 @@ a.brand-name {
 .form-control textarea:focus {
   outline-color: #00695c;
 }
+
+.error-page-div {
+  text-align: center;
+  align-items: center;
+}
+
+.error-page-heading {
+    font-size: 80px;
+    font-weight: 600;
+    color: #33213b;
+}
+
+.error-page-sub-heading {
+  font-size: 30px;
+}
