@@ -13,6 +13,7 @@ const localSignup = () => {
     headers,
     body: JSON.stringify(data)
   }).then((result) => {
+    window.location = '/login';
     return result.json();
   }).catch((err) => {
     console.log(err);
