@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 
 const http = require('http');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
@@ -26,6 +27,34 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('./models/user');
+
+passport.use(new LocalStrategy(
+    {
+      usernameField: 'email'
+    },
+    async (email, password, done) => {
+      try {
+        const user = await User.findOne({email});
+        if (!user) {
+          return done(null, false, {error: 'No such user exist'});
+        }
+        if (!user.isValidPassword(password)) {
+          return done(null, false, {error: 'Incorrect password'});
+        }
+        done(null, user);
+      } catch (error) {
+        done(error, false);
+      }
+    }
+));
+
+
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 
@@ -38,7 +67,7 @@ const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 const server = http.createServer(app);
 
-
+console.log('Database connection initiated');
 mongoose.connect(
     process.env.MONGO_URI,
     {
