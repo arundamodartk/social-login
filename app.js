@@ -44,7 +44,8 @@ passport.use(new LocalStrategy(
         if (!user) {
           return done(null, false, {error: 'No such user exist'});
         }
-        if (!user.isValidPassword(password)) {
+        const isValid = await user.isValidPassword(password);
+        if (!isValid) {
           return done(null, false, {error: 'Incorrect password'});
         }
         done(null, user);
