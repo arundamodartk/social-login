@@ -1,4 +1,5 @@
-const createError = require('http-errors');
+'use srrict';
+// const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -6,6 +7,8 @@ const cookieParser = require('cookie-parser');
 const http = require('http');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const session = require('express-session');
+const MongDBStore = require('connect-mongodb-session')(session);
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
@@ -26,6 +29,20 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+const store = new MongDBStore({
+  uri: process.env.MONGO_URI,
+  collection: 'sessions'
+});
+app.use(
+    session({
+      secret: 'socialpassportjsapp',
+      resave: false,
+      saveUninitialized: false,
+      store: store
+    })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
