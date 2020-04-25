@@ -13,7 +13,7 @@ router.post('/login', function(req, res, next) {
       return next(err);
     }
     if (!user) {
-      return res.status(401).send({error: info.error});
+      return res.status(401).send({error: 'Incorrect email or password!'});
     }
     res.json({success: true});
   })(req, res, next);
