@@ -38,6 +38,7 @@ const localLogin = () => {
     body: JSON.stringify(data)
   }).then((result) => {
     console.log(result);
+    window.location = '/user/dashboard';
   }).catch((err) => {
     console.log(err);
   });

@@ -21,4 +21,6 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
+router.get('/dashboard', userController.getDashboard);
+
 module.exports = router;

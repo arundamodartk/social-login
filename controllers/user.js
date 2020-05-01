@@ -14,7 +14,14 @@ const signup = async (req, res) => {
   }
 };
 
+const getDashboard = (req, res, next) => {
+  res.render('dashboard', {
+    title: 'Social Login',
+    name: (req.session && req.session.user && req.session.user.name) || 'user'
+  });
+};
 
 module.exports = {
-  signup
+  signup,
+  getDashboard
 };
