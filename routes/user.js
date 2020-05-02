@@ -15,9 +15,12 @@ router.post('/login', function(req, res, next) {
     if (!user) {
       return res.status(401).send({error: 'Incorrect email or password!'});
     }
-    // res.setHeader('Set-Cookie', 'isLoggedIn=true');
-    req.session.isLoggedIn = true;
-    res.json({success: true});
+    // req.login function provided by passportjs triggers serializeUser.
+    // which in turn save the user id in session (in mongodb session store).
+    req.login(user, (err) => {
+      return res.status(500);
+    });
+    res.status(200).json({userId: user._id});
   })(req, res, next);
 });
 
