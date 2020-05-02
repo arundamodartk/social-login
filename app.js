@@ -37,10 +37,10 @@ const store = new MongDBStore({
 });
 app.use(
     session({
-      secret: 'socialpassportjsapp',
-      resave: false,
-      saveUninitialized: false,
-      store: store
+      secret: 'socialpassport', // secret key to hash the session object.
+      resave: false, // resave the session obj only if any changes occurs to it
+      saveUninitialized: false, // only create session for logged in
+      store: store // db credentials to store sessions
     })
 );
 
@@ -54,7 +54,7 @@ const User = require('./models/user');
 
 passport.serializeUser((user, done) => {
   console.log('serailized');
-  done(null, user.id);
+  done(null, user._id);
 });
 
 passport.deserializeUser((id, done) => {
@@ -73,11 +73,11 @@ passport.use(new LocalStrategy(
       try {
         const user = await User.findOne({email});
         if (!user) {
-          return done(null, false, {error: 'No such user exist'});
+          return done(null, false);
         }
         const isValid = await user.isValidPassword(password);
         if (!isValid) {
-          return done(null, false, {error: 'Incorrect password'});
+          return done(null, false);
         }
         done(null, user);
       } catch (error) {
