@@ -40,8 +40,9 @@ const localLogin = () => {
     method: 'POST',
     headers,
     body: JSON.stringify(data)
-  }).then((result) => {
-    console.log(result);
+  }).then(async (result) => {
+    // user details will be set in session and cookie by passportjs during login
+    // and authorization will be handled in subsequent request.
     window.location = '/user/dashboard';
   }).catch((err) => {
     console.log(err);

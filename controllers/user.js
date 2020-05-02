@@ -24,12 +24,13 @@ const signup = async (req, res) => {
 };
 
 const getDashboard = (req, res, next) => {
-  console.log('dashboard');
-  console.log(req);
-  console.log(req.session);
+  if (!req.isAuthenticated()) {
+    return res.redirect('/login');
+  }
+  // req.user & req.isAuthenticated() are 2 useful access provided by passportjs
   res.render('dashboard', {
     title: 'Social Login',
-    name: (req.session && req.session.user && req.session.user.name) || 'user'
+    name: (req.user && req.user.name) || 'user'
   });
 };
 
