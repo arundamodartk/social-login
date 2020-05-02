@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/login', function(req, res, next) {
-  console.log(req.session.isLoggedIn);
+  console.log(req.user);
   res.render('login-page', {title: 'Social Login'});
 });
 

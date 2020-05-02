@@ -51,6 +51,20 @@ app.use(passport.session());
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 
+
+passport.serializeUser((user, done) => {
+  console.log('serailized');
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  console.log('deserialized user');
+  User.findById(id).then((user) => {
+    done(null, user);
+  });
+});
+
+
 passport.use(new LocalStrategy(
     {
       usernameField: 'email'

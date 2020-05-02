@@ -14,9 +14,13 @@ const localSignup = () => {
     method: 'POST',
     headers,
     body: JSON.stringify(data)
-  }).then((result) => {
-    window.location = '/login';
-    return result.json();
+  }).then(async (result) => {
+    result = await result.json();
+    if (result.status !==200) {
+      alert(JSON.stringify(result.message));
+    } else {
+      window.location = '/login';
+    }
   }).catch((err) => {
     console.log(err);
   });
