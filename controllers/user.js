@@ -35,7 +35,13 @@ const getDashboard = (req, res, next) => {
   });
 };
 
+const logoutUser = (req, res, next) => {
+  req.logout();
+  return res.status(200).json({success: true});
+};
+
 module.exports = {
   signup,
-  getDashboard
+  getDashboard,
+  logoutUser
 };

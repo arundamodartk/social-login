@@ -48,3 +48,11 @@ const localLogin = () => {
     console.log(err);
   });
 };
+
+const userLogout = () => {
+  fetch('/user/logout').then((result) => {
+    window.location = '/';
+  }).catch((err) => {
+    console.log(err);
+  });
+};
