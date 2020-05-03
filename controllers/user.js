@@ -30,7 +30,8 @@ const getDashboard = (req, res, next) => {
   // req.user & req.isAuthenticated() are 2 useful access provided by passportjs
   res.render('dashboard', {
     title: 'Social Login',
-    name: (req.user && req.user.name) || 'user'
+    name: (req.user && req.user.name) || 'user',
+    isLoggedIn: true
   });
 };
 

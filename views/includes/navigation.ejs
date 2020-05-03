@@ -4,12 +4,18 @@
       <li class="main-header-item">
         <a class="navbar-brand brand-name" href="/">Social Login Demo</a>
       </li>
-      <li class="main-header-item">
-        <a href="/login">Login</a>
-      </li>
-      <li class="main-header-item">
-        <a href="/signup">Sign up</a>
-      </li>
+      <% if (!isLoggedIn) { %>
+        <li class="main-header-item">
+          <a href="/login">Login</a>
+        </li>
+        <li class="main-header-item">
+          <a href="/signup">Sign up</a>
+        </li>
+      <% } else { %>
+        <li class="main-header-item">
+          <a>Logout</a>
+        </li>
+      <% } %>
     </ul>
   </nav>
 </div>

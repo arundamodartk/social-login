@@ -6,7 +6,8 @@ const passport = require('passport');
 const router = express.Router();
 const userController = require('../controllers/user');
 
-router.route('/signup').post(userController.signup);
+router.post('/signup', userController.signup);
+
 router.post('/login', function(req, res, next) {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
