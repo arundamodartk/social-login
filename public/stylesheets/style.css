@@ -6,7 +6,11 @@ body {
 }
 
 a {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
+}
+
+label {
+  margin: 0px !important;
 }
 
 main {
@@ -16,7 +20,7 @@ main {
 
 .main-header{
   height: 3.5rem;
-  background-color: #57282c;
+  background-color: #d63737;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
@@ -39,6 +43,7 @@ a.brand-name {
 }
 
 .main-header-item-list {
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -62,7 +67,7 @@ a.brand-name {
 }
 
 .form-control {
-  margin: 1rem 0;
+  margin: 0;
 }
 
 .form-control label,
@@ -70,7 +75,6 @@ a.brand-name {
 .form-control textarea {
   display: block;
   width: 100%;
-  margin-bottom: 0.25rem;
 }
 
 .form-control input,

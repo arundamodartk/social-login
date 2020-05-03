@@ -2,20 +2,20 @@
   <body>
     <%- include('./includes/navigation.ejs') %>
     <main>
-      <form class="login-form" action="/login" method="POST">
-        <div class="form-control">
+      <form class="login-form">
+        <div class="form-group">
             <label for="email">Name</label>
-            <input type="text" name="name" id="name" required>
+            <input class="form-control" type="text" name="name" id="name" required>
         </div>
-        <div class="form-control">
+        <div class="form-group">
             <label for="email">E-Mail</label>
-            <input type="email" name="email" id="email" required>
+            <input class="form-control" type="email" name="email" id="email" required>
         </div>
-        <div class="form-control">
+        <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <input class="form-control" type="password" name="password" id="password" required>
         </div>
-        <button class="btn" type="button" onclick="localSignup()">Sign up</button>
+        <button class="btn btn-primary" type="button" onclick="localSignup()">Sign up</button>
       </form>
     </main>
   </body>

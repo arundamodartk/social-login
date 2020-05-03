@@ -2,16 +2,16 @@
   <body>
     <%- include('./includes/navigation.ejs') %>
     <main>
-      <form class="login-form" action="/login" method="POST">
-        <div class="form-control">
+      <form class="login-form">
+        <div class="form-group">
             <label for="email">E-Mail</label>
-            <input type="email" name="email" id="email">
+            <input type="email" class="form-control" name="email" id="email">
         </div>
-        <div class="form-control">
+        <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+            <input type="password" class="form-control" name="password" id="password">
         </div>
-        <button class="btn" type="button" onclick="localLogin()">Log In</button>
+        <button class="btn btn-primary" type="button" onclick="localLogin()">Log In</button>
       </form>
     </main>
   </body>
