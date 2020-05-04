@@ -2,6 +2,7 @@ const localSignup = () => {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
+  document.getElementById('error-field').innerHTML = '';
   const data = {
     name: name,
     email: email,
@@ -15,9 +16,10 @@ const localSignup = () => {
     headers,
     body: JSON.stringify(data)
   }).then(async (result) => {
-    result = await result.json();
     if (result.status !==200) {
-      alert(JSON.stringify(result.message));
+      result = await result.json();
+      document.getElementById('error-field').innerHTML =
+        `** ${result.errorMessage}`;
     } else {
       window.location = '/login';
     }
@@ -29,6 +31,7 @@ const localSignup = () => {
 const localLogin = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
+  document.getElementById('error-field').innerHTML = '';
   const data = {
     email: email,
     password: password
@@ -41,9 +44,15 @@ const localLogin = () => {
     headers,
     body: JSON.stringify(data)
   }).then(async (result) => {
-    // user details will be set in session and cookie by passportjs during login
-    // and authorization will be handled in subsequent request.
-    window.location = '/user/dashboard';
+    if (result.status !==200) {
+      result = await result.json();
+      document.getElementById('error-field').innerHTML =
+        `** ${result.errorMessage}`;
+    } else {
+      // user details will be set in session & cookie by passportjs during login
+      // and authorization will be handled in subsequent request.
+      window.location = '/user/dashboard';
+    }
   }).catch((err) => {
     console.log(err);
   });

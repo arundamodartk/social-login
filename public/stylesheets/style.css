@@ -18,6 +18,11 @@ main {
   margin: auto;
 }
 
+#error-field {
+  font-size: 12px;
+  color: #c91919;
+}
+
 .main-header{
   height: 3.5rem;
   background-color: #d63737;

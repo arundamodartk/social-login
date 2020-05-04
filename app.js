@@ -53,12 +53,12 @@ const User = require('./models/user');
 
 
 passport.serializeUser((user, done) => {
-  console.log('serailized');
+  // console.log('serailized');
   done(null, user._id);
 });
 
 passport.deserializeUser((id, done) => {
-  console.log('deserialized user');
+  // console.log('deserialized user');
   User.findById(id).then((user) => {
     done(null, user);
   });

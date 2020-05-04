@@ -9,7 +9,7 @@ const signup = async (req, res) => {
     console.log(`existing usr ${existingUser}`);
     if (existingUser) {
       res.status(422).json({
-        message: 'Email already exists',
+        errorMessage: 'Email already exists',
         userInput: req.body
       });
     } else {
