@@ -5,7 +5,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+.main-header-item a {
   color: #FFFFFF !important;
 }
 
@@ -107,4 +107,8 @@ a.brand-name {
 
 .error-page-sub-heading {
   font-size: 30px;
+}
+
+.center-text {
+  text-align: center;
 }

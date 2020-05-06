@@ -2,18 +2,23 @@
   <body>
     <%- include('./includes/navigation.ejs') %>
     <main>
-      <form class="login-form">
-        <div class="form-group">
-            <label for="email">E-Mail</label>
-            <input type="email" class="form-control" name="email" id="email">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" id="password">
-        </div>
-        <span id="error-field"></span>
-        <button class="btn btn-primary btn-block" type="button" onclick="localLogin()">Log In</button>
-      </form>
+      <div class="login-form">
+        <form>
+          <div class="form-group">
+              <label for="email">E-Mail</label>
+              <input type="email" class="form-control" name="email" id="email">
+          </div>
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password" id="password">
+          </div>
+          <span id="error-field"></span>
+          <button class="btn btn-primary btn-block" type="button" onclick="localLogin()">Log In</button>
+        </form>
+        <p class="center-text mt-3">
+          <a href="/signup">New to Social-login app?</a>
+        </p>
+      </div>
     </main>
   </body>
 </html>

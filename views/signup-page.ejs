@@ -2,22 +2,27 @@
   <body>
     <%- include('./includes/navigation.ejs') %>
     <main>
-      <form class="login-form">
-        <div class="form-group">
-            <label for="email">Name</label>
-            <input class="form-control" type="text" name="name" id="name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">E-Mail</label>
-            <input class="form-control" type="email" name="email" id="email" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control" type="password" name="password" id="password" required>
-        </div>
-        <span id="error-field"></span>
-        <button class="btn btn-primary btn-block" type="button" onclick="localSignup()">Sign up</button>
-      </form>
+      <div class="login-form">
+        <form>
+          <div class="form-group">
+              <label for="email">Name</label>
+              <input class="form-control" type="text" name="name" id="name" required>
+          </div>
+          <div class="form-group">
+              <label for="email">E-Mail</label>
+              <input class="form-control" type="email" name="email" id="email" required>
+          </div>
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input class="form-control" type="password" name="password" id="password" required>
+          </div>
+          <span id="error-field"></span>
+          <button class="btn btn-primary btn-block" type="button" onclick="localSignup()">Sign up</button>
+        </form>
+        <p class="center-text mt-3">
+          <a href="/login">Already a member?</a>
+        </p>
+      </div>
     </main>
   </body>
 </html>
