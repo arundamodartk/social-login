@@ -1,19 +1,21 @@
-'use srrict';
+'use strict';
 // const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-
 const http = require('http');
 const mongoose = require('mongoose');
-const passport = require('passport');
 const session = require('express-session');
 const MongDBStore = require('connect-mongodb-session')(session);
+const os = require('os');
+const passport = require('passport');
+require('./config/passport-config')(passport);
+/* register the passportJS startegies to be used in our application
+using this above anonymous function call. */
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 
-const os = require('os');
 require('dotenv').config({
   path: os.homedir() + '/social-login.env'
 });
@@ -46,46 +48,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-const LocalStrategy = require('passport-local').Strategy;
-const User = require('./models/user');
-
-
-passport.serializeUser((user, done) => {
-  // console.log('serailized');
-  done(null, user._id);
-});
-
-passport.deserializeUser((id, done) => {
-  // console.log('deserialized user');
-  User.findById(id).then((user) => {
-    done(null, user);
-  });
-});
-
-
-passport.use(new LocalStrategy(
-    {
-      usernameField: 'email'
-    },
-    async (email, password, done) => {
-      try {
-        const user = await User.findOne({email});
-        if (!user) {
-          return done(null, false);
-        }
-        const isValid = await user.isValidPassword(password);
-        if (!isValid) {
-          return done(null, false);
-        }
-        done(null, user);
-      } catch (error) {
-        done(error, false);
-      }
-    }
-));
-
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
