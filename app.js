@@ -13,8 +13,9 @@ require('./config/passport-config')(passport);
 /* register the passportJS startegies to be used in our application
 using this above anonymous function call. */
 
-const indexRouter = require('./routes/index');
-const userRouter = require('./routes/user');
+const indexRouter = require('./routes/index-route');
+const authRouter = require('./routes/auth-route');
+const userRouter = require('./routes/user-route');
 
 require('dotenv').config({
   path: os.homedir() + '/social-login.env'
@@ -50,6 +51,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 app.use('/user', userRouter);
 
 // catch 404 and forward to error handler

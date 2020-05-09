@@ -11,7 +11,7 @@ const localSignup = () => {
   const headers = new Headers();
   headers.append('Accept', 'application/json');
   headers.append('Content-Type', 'application/json');
-  fetch('/user/signup', {
+  fetch('/auth/signup', {
     method: 'POST',
     headers,
     body: JSON.stringify(data)
@@ -39,7 +39,7 @@ const localLogin = () => {
   const headers = new Headers();
   headers.append('Accept', 'application/json');
   headers.append('Content-Type', 'application/json');
-  fetch('/user/login', {
+  fetch('/auth/login', {
     method: 'POST',
     headers,
     body: JSON.stringify(data)
@@ -59,7 +59,7 @@ const localLogin = () => {
 };
 
 const userLogout = () => {
-  fetch('/user/logout').then((result) => {
+  fetch('/auth/logout').then((result) => {
     window.location = '/';
   }).catch((err) => {
     console.log(err);

@@ -1,9 +1,8 @@
 'use strict';
 
 const express = require('express');
-const passport = require('passport');
-
 const router = express.Router();
+const passport = require('passport');
 const userController = require('../controllers/user');
 
 router.post('/signup', userController.signup);
@@ -26,8 +25,6 @@ router.post('/login', function(req, res, next) {
     res.status(200).send({userId: user._id});
   })(req, res, next);
 });
-
-router.get('/dashboard', userController.getDashboard);
 
 router.get('/logout', userController.logoutUser);
 
