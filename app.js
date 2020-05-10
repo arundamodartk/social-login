@@ -8,6 +8,12 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongDBStore = require('connect-mongodb-session')(session);
 const os = require('os');
+require('dotenv').config({
+  path: os.homedir() + '/social-login.env'
+});
+/* env configured before passport strategy configurations
+ to get the clientID from env. */
+
 const passport = require('passport');
 require('./config/passport-config')(passport);
 /* register the passportJS startegies to be used in our application
@@ -16,10 +22,6 @@ using this above anonymous function call. */
 const indexRouter = require('./routes/index-route');
 const authRouter = require('./routes/auth-route');
 const userRouter = require('./routes/user-route');
-
-require('dotenv').config({
-  path: os.homedir() + '/social-login.env'
-});
 
 const app = express();
 
