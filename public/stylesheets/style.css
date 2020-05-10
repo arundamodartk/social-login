@@ -2,7 +2,7 @@ body {
   /* width: 100%; */
   margin: 0;
   padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif !important;
 }
 
 .main-header-item a {
@@ -111,4 +111,17 @@ a.brand-name {
 
 .center-text {
   text-align: center;
+}
+
+.google-button {
+  /* x, y, blur, spread */
+  box-shadow: 0px 2px 3px 3px rgba(0,0,0,0.05);
+  font-family: 'Roboto', sans-serif;
+  color: #646f7a !important;
+}
+
+.google-button img {
+  width: 20px;
+  height: 20px;
+  margin: 3px;
 }
