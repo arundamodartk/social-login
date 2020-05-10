@@ -28,4 +28,14 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', userController.logoutUser);
 
+// to get authentication with google to get
+router.get('/google',
+    passport.authenticate('google', {scope: ['profile', 'email']})
+);
+
+// callback route google redirect to.
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+  res.redirect('/user/dashboard');
+});
+
 module.exports = router;

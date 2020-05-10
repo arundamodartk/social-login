@@ -1,4 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/user');
 
 module.exports = (passport) => {
@@ -34,4 +35,26 @@ module.exports = (passport) => {
         }
       }
   ));
+
+  passport.use(new GoogleStrategy(
+      // options for google strategy
+      {
+        callbackURL: '/auth/google/redirect',
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      }, async (accessToken, refreshToken, profile, done) => {
+        // passport callback function executed during /auth/google/redirect
+        const existingUser = await User.findOne({googleId: profile.id});
+        if (existingUser) {
+          done(null, existingUser);
+        } else {
+          const newUser = await new User({
+            email: profile.emails[0].value,
+            name: profile.displayName,
+            googleId: profile.id
+          }).save();
+          done(null, newUser);
+        }
+      })
+  );
 };
