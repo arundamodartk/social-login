@@ -3,7 +3,7 @@ This is an application to demonstrate the social login using [**Passportjs**](ht
 
 ## Screenshots
 
-![Login page screenshot](/images/Screenshot1.png?raw=true "Login screen")
+<img src="./public/images/Screenshot1.png" width="400" height="250" alt="Login page">
 
 
 ## Requirements
