@@ -1,6 +1,11 @@
 # Social Login (Passportjs strategies) #
 This is an application to demonstrate the social login using [**Passportjs**](http://www.passportjs.org/) strategies. This application is build using ExpressJS framework on NodeJs runtime environment using create-express-app.
 
+## Screenshots
+
+<img src="./public/images/Screenshot1.png" width="400" height="250" alt="Login page">
+
+
 ## Requirements
 - For development, you will need Node.js and a node global package, npm, installed in your environment.
 - A mongoDB database.
