@@ -1,5 +1,4 @@
 'use strict';
-// const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -16,7 +15,7 @@ require('dotenv').config({
 
 const passport = require('passport');
 require('./config/passport-config')(passport);
-/* register the passportJS startegies to be used in our application
+/* register the passportJS strategies to be used in our application
 using this above anonymous function call. */
 
 const indexRouter = require('./routes/index-route');
