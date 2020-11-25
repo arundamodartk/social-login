@@ -1,5 +1,4 @@
 'use strict';
-// const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -16,7 +15,7 @@ require('dotenv').config({
 
 const passport = require('passport');
 require('./config/passport-config')(passport);
-/* register the passportJS startegies to be used in our application
+/* register the passportJS strategies to be used in our application
 using this above anonymous function call. */
 
 const indexRouter = require('./routes/index-route');
@@ -92,12 +91,12 @@ server.on('listening', onListening);
  * @return {*}
  */
 function normalizePort(val) {
-  const port = parseInt(val, 10);
-  if (isNaN(port)) {
+  const portToUse = parseInt(val, 10);
+  if (isNaN(portToUse)) {
     return val;
   }
-  if (port >= 0) {
-    return port;
+  if (portToUse >= 0) {
+    return portToUse;
   }
   return false;
 }
