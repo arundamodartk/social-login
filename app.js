@@ -91,12 +91,12 @@ server.on('listening', onListening);
  * @return {*}
  */
 function normalizePort(val) {
-  const port = parseInt(val, 10);
-  if (isNaN(port)) {
+  const portToUse = parseInt(val, 10);
+  if (isNaN(portToUse)) {
     return val;
   }
-  if (port >= 0) {
-    return port;
+  if (portToUse >= 0) {
+    return portToUse;
   }
   return false;
 }
